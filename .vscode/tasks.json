@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Docker: Build Image",
+            "type": "shell",
+            "command": "docker build -f .dockerfile -t api-testing-project .",
+            "problemMatcher": [],
+            "group": {
+              "kind": "build",
+              "isDefault": true
+            },
+            "detail": "Builds the Docker image for tests"
+          },
+          {
+            "label": "Docker: Run Test",
+            "type": "shell",
+            "command": "docker run --rm -v $(pwd)/allure-results:/app/allure-results api-testing-project pytest test/ --alluredir=/app/allure-results",
+            "dependsOn": ["Docker: Build Image"],
+            "problemMatcher": [],
+            "group": "test",
+            "detail": "Runs tests and generates JSON results only"
+        }
+    ]
+  }
