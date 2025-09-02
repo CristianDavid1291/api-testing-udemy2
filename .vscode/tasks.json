@@ -15,7 +15,7 @@
           {
             "label": "Docker: Run Test",
             "type": "shell",
-            "command": "docker run --rm -v $(pwd)/allure-results:/app/allure-results api-testing-project pytest test/ --alluredir=/app/allure-results",
+            "command": "docker run --rm -v ${PWD}/allure-results:/app/allure-results api-testing-project pytest test/ --alluredir=/app/allure-results",
             "dependsOn": ["Docker: Build Image"],
             "problemMatcher": [],
             "group": "test",
